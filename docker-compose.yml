@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7.2-alpine
+    container_name: ratelimiter-redis
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  # Optional: You can also containerize the Spring Boot app itself
+  # app:
+  #   build: .
+  #   ports:
+  #     - "8080:8080"
+  #   depends_on:
+  #     - redis
+  #   environment:
+  #     - SPRING_REDIS_HOST=redis
+
+volumes:
+  redis_data:
