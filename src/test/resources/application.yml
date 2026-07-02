@@ -1,0 +1,13 @@
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6370  # Use a different port for embedded Redis in tests
+
+rate-limiter:
+  default-limit: 10
+  default-window-size-seconds: 60
+
+logging:
+  level:
+    com.ratelimiter: DEBUG
