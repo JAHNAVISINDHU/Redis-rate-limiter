@@ -136,8 +136,8 @@ docker exec redis-rate-limiter redis-cli ping
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                   REST API Client                    │
-│              (X-API-Key header required)             │
+│                   REST API Client                   │
+│              (X-API-Key header required)            │
 └───────────────────────┬─────────────────────────────┘
                         │
                         ▼
