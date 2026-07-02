@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: redis-rate-limiter
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 2000ms
+      lettuce:
+        pool:
+          max-active: 10
+          max-idle: 5
+          min-idle: 1
+          max-wait: 1000ms
+
+server:
+  port: 8080
+
+# Rate Limiter Defaults
+rate-limiter:
+  default-limit: 10
+  default-window-size-seconds: 60
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.ratelimiter: DEBUG
+    org.springframework.data.redis: INFO
